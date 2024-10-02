@@ -82,15 +82,15 @@ include 'people.php' ?>
 								<form action="?Id=<?php echo $res['Id'];?>" method="post" enctype="multipart/form-data">
 									<div class="form-group">
 										<small>Имя сотрудника</small>
-										<input type="text" class="form-control" name="Name" value="<?php echo $res['Name'];?>">
+										<input type="text" class="form-control" name="Name" value="<?php echo htmlspecialchars($res['Name']);?>" required>
 									</div>
 									<div class="form-group">
 										<small>Должность сотрудника</small>
-										<input type="text" class="form-control" name="Role" value="<?php echo $res['Role'];?>">
+										<input type="text" class="form-control" name="Role" value="<?php echo htmlspecialchars($res['Role']);?>" required>
 									</div>
 									<div class="form-group">
 										<small>ID сотрудника</small>
-										<input type="text" class="form-control" name="StaffId" value="<?php echo $res['StaffId'];?>">
+										<input type="text" class="form-control" name="StaffId" value="<?php echo htmlspecialchars($res['StaffId']);?>" required>
 									</div>
 							</div>
 							<div class="modal-footer">
@@ -137,15 +137,15 @@ include 'people.php' ?>
 				<form action="" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<small>Имя сотрудника</small>
-						<input type="text" class="form-control" name="Name">
+						<input type="text" class="form-control" name="Name" required>
 					</div>
 					<div class="form-group">
 						<small>Должность сотрудника</small>
-						<input type="text" class="form-control" name="Role">
+						<input type="text" class="form-control" name="Role" required>
 					</div>
 					<div class="form-group">
 						<small>ID сотрудника</small>
-						<input type="text" class="form-control" name="StaffId">
+						<input type="text" class="form-control" name="StaffId" required>
 					</div>
 
 			</div>

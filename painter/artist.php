@@ -19,9 +19,69 @@ if(isset($_GET['Id']))
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-	$name = $_POST['Name'];
-	$idArtist = $_POST['IdArtist'];
-	$data = $_POST['Data'];
+	$name = htmlspecialchars($_POST['Name']);
+	$idArtist = htmlspecialchars($_POST['IdArtist']);
+	$data = htmlspecialchars($_POST['Data']);
+}
+
+if (isset($_POST['add']))
+{
+	$errors = [];
+
+	if (empty($_POST['Name']))
+	{
+		$errors[] = "Имя обязательно.";
+	}
+	if (empty($_POST['IdArtist']))
+	{
+		$errors[] = "Айди обязательо.";
+	}
+	if (empty($_POST['Data']))
+	{
+		$errors[] = "Дата нужна.";
+	}
+
+	if (!empty($errors))
+	{
+		foreach ($errors as $error)
+		{
+			echo "<div class='alert alert-danger'>$error</div>";
+		}
+	}
+	else
+	{
+
+	}
+}
+
+if (isset($_POST['edit']))
+{
+	$errors = [];
+
+	if (empty($_POST['Name']))
+	{
+		$errors[] = "Имя обязательно.";
+	}
+	if (empty($_POST['IdArtist']))
+	{
+		$errors[] = "Айди обязательо.";
+	}
+	if (empty($_POST['Data']))
+	{
+		$errors[] = "Дата нужна.";
+	}
+
+	if (!empty($errors))
+	{
+		foreach ($errors as $error)
+		{
+			echo "<div class='alert alert-danger'>$error</div>";
+		}
+	}
+	else
+	{
+
+	}
 }
 
 $columns = ['Name','IdArtist','Data'];

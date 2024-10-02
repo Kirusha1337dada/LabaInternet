@@ -84,19 +84,19 @@ include 'rev.php' ?>
 								<form action="?Id=<?php echo $res['Id'];?>" method="post" enctype="multipart/form-data">
 									<div class="form-group">
 										<small>ID посетителя</small>
-										<input type="text" class="form-control" name="VisitorId" value="<?php echo $res['VisitorId'];?>">
+										<input type="number" class="form-control" name="VisitorId" value="<?php echo htmlspecialchars($res['VisitorId']);?>" required>
 									</div>
 									<div class="form-group">
 										<small>ID картины</small>
-										<input type="text" class="form-control" name="PaintingId" value="<?php echo $res['PaintingId'];?>">
+										<input type="number" class="form-control" name="PaintingId" value="<?php echo htmlspecialchars($res['PaintingId']);?>" required>
 									</div>
 									<div class="form-group">
 										<small>Рейтинг</small>
-										<input type="text" class="form-control" name="Rating" value="<?php echo $res['Rating'];?>">
+										<input type="number" class="form-control" name="Rating" value="<?php echo htmlspecialchars($res['Rating']);?>" required>
 									</div>
 									<div class="form-group">
 										<small>Комментарии</small>
-										<input type="text" class="form-control" name="Commentary" value="<?php echo $res['Commentary'];?>">
+										<input type="text" class="form-control" name="Commentary" value="<?php echo htmlspecialchars($res['Commentary']);?>" required>
 									</div>
 
 							</div>
@@ -144,19 +144,19 @@ include 'rev.php' ?>
 				<form action="" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<small>ID посетителя</small>
-						<input type="text" class="form-control" name="VisitorId">
+						<input type="text" class="form-control" name="VisitorId" required>
 					</div>
 					<div class="form-group">
 						<small>ID картины</small>
-						<input type="text" class="form-control" name="PaintingId">
+						<input type="text" class="form-control" name="PaintingId" required>
 					</div>
 					<div class="form-group">
 						<small>Рейтинг</small>
-						<input type="text" class="form-control" name="Rating">
+						<input type="text" class="form-control" name="Rating" required>
 					</div>
 					<div class="form-group">
 						<small>Комментарии</small>
-						<input type="text" class="form-control" name="Commentary">
+						<input type="text" class="form-control" name="Commentary" required>
 					</div>
 
 			</div>

@@ -19,10 +19,78 @@ $database->dbConnect();
 		}
 		if($_SERVER["REQUEST_METHOD"] == "POST")
 		{
-			$title = $_POST['Title'];
+			$title = htmlspecialchars($_POST['Title'],ENT_QUOTES,'UTF-8');
 			$filename = $_FILES['FileName']['name'];
-			$id_artist = $_POST['IdArtist'];
-			$data = $_POST['Data'];
+			$id_artist = htmlspecialchars($_POST['IdArtist'],ENT_QUOTES,'UTF-8');
+			$data = htmlspecialchars($_POST['Data']);
+		}
+
+		if (isset($_POST['add']))
+		{
+			$errors = [];
+
+			if (empty($_POST['Title']))
+			{
+				$errors[] = "Название продукта обязательно.";
+			}
+			if (empty($_FILES['FileName']['name']))
+			{
+				$errors[] = "Файл продукта обязателен.";
+			}
+			if (empty($_POST['Name']))
+			{
+				$errors[] = "Описание обязательно.";
+			}
+			if (empty($_POST['Price']))
+			{
+				$errors[] = "Цена обязательна.";
+			}
+
+			if (!empty($errors))
+			{
+				foreach ($errors as $error)
+				{
+					echo "<div class='alert alert-danger'>$error</div>";
+				}
+			}
+			else
+			{
+
+			}
+		}
+
+		if (isset($_POST['edit']))
+		{
+			$errors = [];
+
+			if (empty($_POST['Title']))
+			{
+				$errors[] = "Название продукта обязательно.";
+			}
+			if (empty($_FILES['FileName']['name']))
+			{
+				$errors[] = "Файл продукта обязателен.";
+			}
+			if (empty($_POST['Name']))
+			{
+				$errors[] = "Описание обязательно.";
+			}
+			if (empty($_POST['Price']))
+			{
+				$errors[] = "Цена обязательна.";
+			}
+
+			if (!empty($errors))
+			{
+				foreach ($errors as $error)
+				{
+					echo "<div class='alert alert-danger'>$error</div>";
+				}
+			}
+			else
+			{
+
+			}
 		}
 
 		try
@@ -95,12 +163,26 @@ $database->dbConnect();
 		{
 			if(isset($_POST['delete']))
 			{
-				$sqlReq=("DELETE FROM paintings WHERE Id=?");
+				$sqlReq = "SELECT FileName FROM paintings WHERE Id=?";
 				$query = $database->link->prepare($sqlReq);
 				$query->execute([$get_id]);
-				if($query)
+				$result = $query->get_result();
+				$painting = $result->fetch_assoc();
+
+				if ($painting)
 				{
-					header("Location: " . $_SERVER['HTTP_REFERER']);
+					$filePath = '../LabaBeta/фото/' . $painting['FileName'];
+					if (file_exists($filePath))
+					{
+						unlink($filePath);
+					}
+
+					$sqlReq = ("DELETE FROM paintings WHERE Id=?");
+					$query = $database->link->prepare($sqlReq);
+					$query->execute([$get_id]);
+					if ($query) {
+						header("Location: " . $_SERVER['HTTP_REFERER']);
+					}
 				}
 			}
 		}

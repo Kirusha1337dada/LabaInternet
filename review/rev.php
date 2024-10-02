@@ -18,20 +18,88 @@ $database->dbConnect();
 	}
 	if (isset($_POST['VisitorId']))
 	{
-		$visitor = $_POST['VisitorId'];
+		$visitor = htmlspecialchars($_POST['VisitorId']);
 	}
 	if (isset($_POST['PaintingId']))
 	{
-		$painting = $_POST['PaintingId'];
+		$painting = htmlspecialchars($_POST['PaintingId']);
 	}
 	if (isset($_POST['Rating']))
 	{
-		$rating = $_POST['Rating'];
+		$rating = htmlspecialchars($_POST['Rating']);
 	}
 	if (isset($_POST['Commentary']))
 	{
-		$commentary = $_POST['Commentary'];
+		$commentary = htmlspecialchars($_POST['Commentary']);
 	}
+
+if (isset($_POST['add']))
+{
+	$errors = [];
+
+	if (empty($_POST['VisitorId']))
+	{
+		$errors[] = "Айди где?.";
+	}
+	if (empty($_FILES['PaintingId']))
+	{
+		$errors[] = "Айди картины где?.";
+	}
+	if (empty($_POST['Rating']))
+	{
+		$errors[] = "Рейтинг подкрути.";
+	}
+	if (empty($_POST['Commentary']))
+	{
+		$errors[] = "Комментарий поставь.";
+	}
+
+	if (!empty($errors))
+	{
+		foreach ($errors as $error)
+		{
+			echo "<div class='alert alert-danger'>$error</div>";
+		}
+	}
+	else
+	{
+
+	}
+}
+
+if (isset($_POST['edit']))
+{
+	$errors = [];
+
+	if (empty($_POST['VisitorId']))
+	{
+		$errors[] = "Айди где?.";
+	}
+	if (empty($_FILES['PaintingId']))
+	{
+		$errors[] = "Айди картины где?.";
+	}
+	if (empty($_POST['Rating']))
+	{
+		$errors[] = "Рейтинг подкрути.";
+	}
+	if (empty($_POST['Commentary']))
+	{
+		$errors[] = "Комментарий поставь.";
+	}
+
+	if (!empty($errors))
+	{
+		foreach ($errors as $error)
+		{
+			echo "<div class='alert alert-danger'>$error</div>";
+		}
+	}
+	else
+	{
+
+	}
+}
 
 	$columns = ['VisitorId','PaintingId','Rating','Commentary'];
 	$values = [$visitor,$painting,$rating,$commentary];

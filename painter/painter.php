@@ -82,15 +82,15 @@ include 'artist.php' ?>
 								<form action="?Id=<?php echo $res['Id'];?>" method="post" enctype="multipart/form-data">
 									<div class="form-group">
 										<small>Имя художника</small>
-										<input type="text" class="form-control" name="Name" value="<?php echo $res['Name'];?>">
+										<input type="text" class="form-control" name="Name" value="<?php echo htmlspecialchars($res['Name']);?>" required>
 									</div>
 									<div class="form-group">
 										<small>ID художника</small>
-										<input type="text" class="form-control" name="IdArtist" value="<?php echo $res['IdArtist'];?>">
+										<input type="number" class="form-control" name="IdArtist" value="<?php echo htmlspecialchars($res['IdArtist']);?>" required>
 									</div>
 									<div class="form-group">
 										<small>Дата</small>
-										<input type="date" class="form-control" name="Data" value="<?php echo $res['Data'];?>">
+										<input type="date" class="form-control" name="Data" value="<?php echo htmlspecialchars($res['Data']);?>" required>
 									</div>
 							</div>
 							<div class="modal-footer">
@@ -137,15 +137,15 @@ include 'artist.php' ?>
 				<form action="" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<small>Имя художника</small>
-						<input type="text" class="form-control" name="Name">
+						<input type="text" class="form-control" name="Name" required>
 					</div>
 					<div class="form-group">
 						<small>ID художника</small>
-						<input type="text" class="form-control" name="IdArtist">
+						<input type="text" class="form-control" name="IdArtist" required>
 					</div>
 					<div class="form-group">
 						<small>Дата</small>
-						<input type="date" class="form-control" name="Data">
+						<input type="date" class="form-control" name="Data" required>
 					</div>
 
 			</div>

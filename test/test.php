@@ -78,7 +78,7 @@ include 'test1.php' ?>
 								<form action="?Id=<?php echo $res['Id'];?>" method="post" enctype="multipart/form-data">
 									<div class="form-group">
 										<small>Название галереи</small>
-										<input type="text" class="form-control" name="Name" value="<?php echo $res['Name'];?>">
+										<input type="text" class="form-control" name="Name" value="<?php echo htmlspecialchars($res['Name']);?>" required>
 									</div>
 
 							</div>

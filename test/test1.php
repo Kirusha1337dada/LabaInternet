@@ -16,8 +16,53 @@ if(isset($_GET["Id"]))
 }
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-	$name = $_POST["Name"];
+	$name = htmlspecialchars($_POST["Name"]);
 }
+
+if (isset($_POST['add']))
+{
+	$errors = [];
+
+	if (empty($_POST['Name']))
+	{
+		$errors[] = "Описание обязательно.";
+	}
+
+	if (!empty($errors))
+	{
+		foreach ($errors as $error)
+		{
+			echo "<div class='alert alert-danger'>$error</div>";
+		}
+	}
+	else
+	{
+
+	}
+}
+
+if (isset($_POST['edit']))
+{
+	$errors = [];
+
+	if (empty($_POST['Name']))
+	{
+		$errors[] = "Описание обязательно.";
+	}
+
+	if (!empty($errors))
+	{
+		foreach ($errors as $error)
+		{
+			echo "<div class='alert alert-danger'>$error</div>";
+		}
+	}
+	else
+	{
+
+	}
+}
+
 
 $columns=['Name'];
 $values=[$name];

@@ -17,15 +17,75 @@ if(isset($_GET['Id']))
 }
 if(isset($_POST['Name']))
 {
-	$name = $_POST['Name'];
+	$name = htmlspecialchars($_POST['Name']);
 }
 if(isset($_POST['Role']))
 {
-	$role = $_POST['Role'];
+	$role = htmlspecialchars($_POST['Role']);
 }
 if(isset($_POST['StaffId']))
 {
-	$staffId = $_POST['StaffId'];
+	$staffId = htmlspecialchars($_POST['StaffId']);
+}
+
+if (isset($_POST['add']))
+{
+	$errors = [];
+
+	if (empty($_POST['Name']))
+	{
+		$errors[] = "Имя обязательно.";
+	}
+	if (empty($_POST['Role']))
+	{
+		$errors[] = "Роль обязательно.";
+	}
+	if (empty($_POST['StaffId']))
+	{
+		$errors[] = "Айдишник обязателен.";
+	}
+
+	if (!empty($errors))
+	{
+		foreach ($errors as $error)
+		{
+			echo "<div class='alert alert-danger'>$error</div>";
+		}
+	}
+	else
+	{
+
+	}
+}
+
+if (isset($_POST['edit']))
+{
+	$errors = [];
+
+	if (empty($_POST['Name']))
+	{
+		$errors[] = "Имя обязательно.";
+	}
+	if (empty($_POST['Role']))
+	{
+		$errors[] = "Роль обязательно.";
+	}
+	if (empty($_POST['StaffId']))
+	{
+		$errors[] = "Айдишник обязателен.";
+	}
+
+	if (!empty($errors))
+	{
+		foreach ($errors as $error)
+		{
+			echo "<div class='alert alert-danger'>$error</div>";
+		}
+	}
+	else
+	{
+
+	}
 }
 
 $columns = ['Name', 'Role', 'StaffId'];
